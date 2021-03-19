@@ -105,17 +105,12 @@ app.post('/game', auth, (req, res) => {
 });
 
 app.delete('/game/:id', auth, (req, res) => {
-    console.log('aqui');
     if (isNaN(req.params.id)) {
-        console.log('isNaN');
         res.sendStatus = 400;
         res.send('Isso não é um número');
     } else {
-        console.log('else');
         const id = parseInt(req.params.id);
-        console.log(id);
         const index = db.games.findIndex(g => g.id == id);
-        console.log(index);
         if (index == -1) {
             res.sendStatus(404);
         } else {
