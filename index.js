@@ -74,7 +74,7 @@ let db = {
 
 app.get("/games", auth, (req, res) => {
     res.statusCode = 200;
-    res.json({ user: req.loggedUser, games: ddb.games });
+    res.json({ user: req.loggedUser, games: db.games });
 });
 
 app.get("/game/:id", auth, (req, res) => {
@@ -150,7 +150,7 @@ app.put('/game/:id', auth, (req, res) => {
     }
 });
 
-app.post("/auth", auth, (req, res) => {
+app.post("/auth", (req, res) => {
     const { email, password } = req.body;
 
     if (email) {
